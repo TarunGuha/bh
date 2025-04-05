@@ -53,3 +53,12 @@ def list_tasks_api(
         sort_order=sort_order,
     )
     return list_tasks(db, request)
+
+
+@task_router.patch("/update-task")
+def update_task_api(
+    db: DbSession,
+    request: UpdateTaskRequest,
+    current_user: CurrentUser,
+):
+    return update_task(db, request)
