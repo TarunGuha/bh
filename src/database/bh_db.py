@@ -82,9 +82,9 @@ Base = declarative_base(cls=CustomBase)
 def before_cursor_execute(conn, cursor, statement, parameters, context, executemany):
     conn.info.setdefault("query_start_time", []).append(time.time())
     if parameters:
-        logger.debug(f"\n{cursor.mogrify(statement, parameters).decode('utf-8')}\n")
+        logger.warning(f"\n{cursor.mogrify(statement, parameters).decode('utf-8')}\n")
     else:
-        logger.debug(f"\n{statement}\n")
+        logger.warning(f"\n{statement}\n")
 
 
 @event.listens_for(engine, "after_cursor_execute")

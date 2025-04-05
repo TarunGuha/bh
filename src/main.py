@@ -4,6 +4,7 @@ from core.config import APP_CONFIGS
 from middlewares import ExceptionMiddleware
 
 from services.user import user_router
+from services.task import task_router
 
 app = FastAPI(**APP_CONFIGS)
 
@@ -29,3 +30,4 @@ def create_tables():
 
 
 app.include_router(user_router, prefix="/user", tags=["User"])
+app.include_router(task_router, prefix="/task", tags=["Task"])
