@@ -62,3 +62,12 @@ def update_task_api(
     current_user: CurrentUser,
 ):
     return update_task(db, request)
+
+
+@task_router.delete("/delete-task")
+def delete_task_api(
+    db: DbSession,
+    request: DeleteTaskRequest,
+    current_user: CurrentUser,
+):
+    return delete_task(db, request)
